@@ -11,9 +11,8 @@
 
 	<author>Ismayil Khayredinov (ismayil@hypejunction.com)</author>
     <website>http://hypeJunction.com</website>
-    <copyright>2011-2014 (c) Ismayil Khayredinov</copyright>
-    <license>hypeJunction Proprietary License</license>
-	<license>See LICENSE.md</license>
+	<copyright>2011-2014 (c) Ismayil Khayredinov</copyright>
+	<license>GNU Public License version 2</license>
 
 	<requires>
         <type>elgg_release</type>

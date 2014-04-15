@@ -1,5 +1,6 @@
 {
 	"name" : "hypeJunction/hypeDiscovery",
+	"type" : "elgg-plugin",
 	"description" : "Enhanced social presence and discovery of Elgg content in the social eco-system.",
 	"homepage" : "http://hypejunction.com",
 	"keywords" : [ "open graph", "twitter cards", "facebook", "oembed", "discovery" ],

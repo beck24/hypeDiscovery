@@ -32,7 +32,7 @@ function entity_menu_setup($hook, $type, $return, $params) {
 
 	$entity = elgg_extract('entity', $params);
 
-	if ($entity->canEdit() || is_discoverable_type($entity)) {
+	if ($entity->canEdit() && is_discoverable_type($entity)) {
 		elgg_load_js('lightbox');
 		elgg_load_css('lightbox');
 		$return[] = ElggMenuItem::factory(array(

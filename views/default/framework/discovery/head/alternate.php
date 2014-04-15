@@ -4,9 +4,10 @@ namespace hypeJunction\Discovery;
 
 $title = elgg_extract('title', $vars);
 
-$entity = get_entity_from_url($url);
+$entity = get_entity_from_url(current_page_url());
 
 if (!is_embeddable($entity)) {
+	elgg_set_ignore_access($ia);
 	return;
 }
 

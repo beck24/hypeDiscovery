@@ -216,7 +216,7 @@ function discovery_header_metatags($hook, $type, $return, $params) {
 		case 'object' :
 			$owner = $entity->getOwnerEntity();
 			$entity_tags = array(
-				'og:type' => 'profile',
+				'og:type' => 'article',
 				'og:title' => get_discovery_title($entity),
 				'og:image' => $image_url,
 				'og:image:width' => $image_width,

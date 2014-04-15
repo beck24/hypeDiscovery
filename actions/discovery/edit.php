@@ -17,6 +17,8 @@ if (!elgg_instanceof($entity) || !$entity->canEdit()) {
 $entity->og_title = get_input('og_title');
 $entity->og_description = get_input('og_description');
 $entity->og_keywords = string_to_tag_array(get_input('og_keywords', ''));
+$entity->discoverable = (bool)get_input('discoverable', false);
+$entity->embeddable = (bool)get_input('embeddable', false);
 
 $icontime = time();
 $icon_sizes = elgg_get_config('og_icon_sizes');

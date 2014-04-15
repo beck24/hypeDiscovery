@@ -24,9 +24,9 @@ function is_discoverable($entity) {
 		return false;
 	}
 
-	if ($entity->discoverable === true) {
+	if ((bool)$entity->discoverable === true) {
 		return true;
-	} else if ($entity->discoverable === false) {
+	} else if ((bool)$entity->discoverable === false) {
 		return false;
 	}
 
@@ -88,26 +88,16 @@ function is_embeddable($entity) {
 		return false;
 	}
 
-	if ($entity->embeddable === true) {
+	if (!is_discoverable($entity)) {
+		return false;
+	}
+	
+	if ((bool)$entity->embeddable === true) {
 		return true;
-	} else if ($entity->embeddable === false) {
+	} else if ((bool)$entity->embeddable === false) {
 		return false;
 	}
 
-	switch ($entity->access_id) {
-		case ACCESS_PUBLIC :
-			break;
-		case ACCESS_LOGGED_IN :
-			if (!HYPEDISCOVERY_BYPASS_ACCESS) {
-				return false;
-			}
-			return true;
-			break;
-		default :
-			if ($entity->owner_guid !== elgg_get_logged_in_user_guid()) {
-				return false;
-			}
-	}
 }
 
 /**

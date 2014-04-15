@@ -4,8 +4,6 @@ namespace hypeJunction\Discovery;
 
 $entity = elgg_extract('entity', $vars);
 
-echo '<iframe src="https://hypejunction.com/permalink/oembed/2274b9e950fe42c638c9ff0bbc3aa66c/322/open-graph-protocol?" frameborder="0" height="480" width="640" scrolling="auto" seamless="seamless"></iframe>';
-
 $col1 = elgg_view('framework/discovery/icon', array(
 	'entity' => $entity,
 	'size' => '_og',
@@ -15,9 +13,10 @@ $col1 = elgg_view('framework/discovery/icon', array(
 if (is_discoverable_type($entity)) {
 	$col1 .= '<div class="mal">';
 	$col1 .= '<label>' . elgg_echo('discovery:og:discoverable') . '</label>';
+
 	$col1 .= elgg_view('input/dropdown', array(
 		'name' => 'discoverable',
-		'value' => ($entity->discoverable) ? $entity->discoverable : is_discoverable($entity),
+		'value' => (isset($entity->discoverable)) ? (bool)$entity->discoverable : is_discoverable($entity),
 		'options_values' => array(
 			0 => elgg_echo('option:no'),
 			1 => elgg_echo('option:yes'),
@@ -31,7 +30,7 @@ if (is_embeddable_type($entity)) {
 	$col1 .= '<label>' . elgg_echo('discovery:og:embeddable') . '</label>';
 	$col1 .= elgg_view('input/dropdown', array(
 		'name' => 'embeddable',
-		'value' => ($entity->embeddable) ? $entity->embeddable : is_embeddable($entity),
+		'value' => (isset($entity->discoverable)) ? (bool)$entity->embeddable : is_embeddable($entity),
 		'options_values' => array(
 			0 => elgg_echo('option:no'),
 			1 => elgg_echo('option:yes'),

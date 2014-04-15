@@ -4,19 +4,19 @@
 	<name>hypeDiscovery</name>
 	<version>1.0.0.0</version>
 
-    <description>Enhanced presence of Elgg sites in the social eco-system</description>
-    <category>hypeJunction</category>
+	<description>Enhanced presence of Elgg sites in the social eco-system</description>
+	<category>hypeJunction</category>
 	<category>social</category>
 	<category>sharing</category>
 
 	<author>Ismayil Khayredinov (ismayil@hypejunction.com)</author>
-    <website>http://hypeJunction.com</website>
+	<website>http://hypeJunction.com</website>
 	<copyright>2011-2014 (c) Ismayil Khayredinov</copyright>
 	<license>GNU Public License version 2</license>
 
 	<requires>
-        <type>elgg_release</type>
+		<type>elgg_release</type>
 		<version>1.8</version>
-    </requires>
+	</requires>
 
 </plugin_manifest>

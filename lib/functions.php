@@ -24,25 +24,28 @@ function is_discoverable($entity) {
 		return false;
 	}
 
-	if ((bool)$entity->discoverable === true) {
+	if ($entity->owner_guid == elgg_get_logged_in_user_guid()) {
 		return true;
-	} else if ((bool)$entity->discoverable === false) {
-		return false;
+	}
+
+	if (isset($entity->discoverable)) {
+		if ((bool) $entity->discoverable === true) {
+			return true;
+		} else if ((bool) $entity->discoverable === false) {
+			return false;
+		}
 	}
 
 	switch ($entity->access_id) {
 		case ACCESS_PUBLIC :
-			break;
+			return true;
 		case ACCESS_LOGGED_IN :
 			if (!HYPEDISCOVERY_BYPASS_ACCESS) {
 				return false;
 			}
 			return true;
-			break;
 		default :
-			if ($entity->owner_guid !== elgg_get_logged_in_user_guid()) {
-				return false;
-			}
+			return false;
 	}
 }
 
@@ -61,7 +64,7 @@ function is_discoverable_type($entity = null, $type = '', $subtype = '') {
 		$subtype = $entity->getSubtype();
 		$subtype = ($subtype) ? $subtype : 'default';
 	}
-	
+
 	if (!in_array("$type::$subtype", elgg_get_config('discovery_type_subtype_pairs'))) {
 		return false;
 	}
@@ -91,13 +94,12 @@ function is_embeddable($entity) {
 	if (!is_discoverable($entity)) {
 		return false;
 	}
-	
-	if ((bool)$entity->embeddable === true) {
+
+	if (isset($entity->embeddable) && (bool)$entity->embeddable === true) {
 		return true;
-	} else if ((bool)$entity->embeddable === false) {
-		return false;
 	}
 
+	return false;
 }
 
 /**
@@ -169,7 +171,7 @@ function get_provider_url($provider, $entity = null, $referrer = '') {
 	$owner = $entity->getOwnerEntity();
 
 	$elements = array();
-	
+
 	switch ($provider) {
 
 		case 'facebook' :
@@ -218,7 +220,6 @@ function get_provider_url($provider, $entity = null, $referrer = '') {
 				'summary' => $description,
 			);
 			break;
-
 	}
 
 	if ($base_url) {
@@ -453,5 +454,4 @@ function get_discovery_keywords($entity) {
 	} else if ($entity->tags) {
 		return $entity->tags;
 	}
-
 }

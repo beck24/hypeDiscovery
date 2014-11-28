@@ -22,7 +22,7 @@ $registered_entities = elgg_get_config('registered_entities');
 foreach ($registered_entities as $type => $subtypes) {
 	if (sizeof($subtypes) == 0) {
 		$str = elgg_echo("item:$type");
-		$chbx_options[$str] = "$type:default";
+		$chbx_options[$str] = "$type::default";
 	} else {
 		foreach ($subtypes as $subtype) {
 			$str = elgg_echo("item:$type:$subtype");
